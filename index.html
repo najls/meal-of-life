@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>The meal of life</title>
-  <meta charset="UTF-8">
+
   <meta name="description" content="Information about the meal of life.">
   <meta name="keywords" content="bread, meat, dessert, one last drink">
   <meta name="author" content="Nils">
+
   <style>
     @import url(https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap);
     body {
       background-color: #1d2025;
       color: #eee4dc;
       font-family: 'Crimson Text', serif;
-      font-size: 24px;
       letter-spacing: 0.1em;
     }
     h1, ol {
-      font-size: 1em;
+      font-size: 1.5rem;
       margin: 1em;
     }
     h1 {
       font-weight: normal;
     }
     p {
-      font-size: 2em;
+      font-size: 2rem;
       text-align: center;
       padding: 1em;
     }
@@ -43,6 +46,7 @@
     }
     .action {
       color: inherit;
+      cursor: pointer;
       text-decoration: none;
     }
     .action:visited {
@@ -51,6 +55,14 @@
     .action:hover, .action:active {
       text-shadow: 0 0 10px #eee4dc;
     }
+    @media (min-width: 576px) {
+      h1, ol {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 3rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -58,16 +70,16 @@
     <h1>The meal of life</h1>
     <ol>
       <li>
-        <a href="#" class="action" onclick="mealOfLife('bread')">Bread</a>
+        <span class="action" id="bread">Bread</span>
       </li>
       <li>
-        <a href="#" class="action" onclick="mealOfLife('meat')">Meat</a>
+        <span class="action" id="meat">Meat</span>
       </li>
       <li>
-        <a href="#" class="action" onclick="mealOfLife('dessert')">Dessert</a>
+        <span class="action" id="dessert">Dessert</span>
       </li>
       <li>
-        <a href="#" class="action" onclick="mealOfLife('one last drink')">One last drink</a>
+        <span class="action" id="drink">One last drink</span>
       </li>
     </ol>
   </div>
@@ -76,8 +88,11 @@
   </div>
   <script>
     var life = '';
-    function mealOfLife(id) {
-      switch (id) {
+    Array.from(document.getElementsByClassName('action')).forEach(elem => {
+      elem.addEventListener('click', mealOfLife);
+    });
+    function mealOfLife(e) {
+      switch (e.target.id) {
         case 'bread':
           life = 'Bread begins the meal of life.';
           break;
@@ -87,7 +102,7 @@
         case 'dessert':
           life = 'A dessert to cherish our remaining years.';
           break;
-        case 'one last drink':
+        case 'drink':
           life = 'One last drink and the bottle breaks, returning us to the dust from whence we came.';
           break;
       }
