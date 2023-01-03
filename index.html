@@ -17,6 +17,7 @@
       color: #eee4dc;
       font-family: 'Crimson Text', serif;
       letter-spacing: 0.1em;
+      margin: 0;
     }
     h1, ol {
       font-size: 1.5rem;
@@ -33,15 +34,10 @@
     li {
       text-transform: uppercase;
     }
-    .menu {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
     .content {
       height: 100vh;
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
     }
     .action {
@@ -61,6 +57,12 @@
       }
       p {
         font-size: 3rem;
+      }
+      .menu {
+        position: absolute;
+      }
+      .content {
+        align-items: center;
       }
     }
   </style>
